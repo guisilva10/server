@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_API_KEY);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_API_KEY || 3000);
 const express = require("express");
 const cors = require("cors");
 
@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PAYMENT_CONFIRMATION_URL = `${process.env.FRONT_END_URL}/payment-confirmation`;
+const PAYMENT_CONFIRMATION_URL = `${process.env.FRONT_END_URL || 3000}/payment-confirmation`;
 
 app.post("/create-checkout-session", async (req, res) => {
   console.log(req.body);
