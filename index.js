@@ -11,7 +11,7 @@ app.use(express.json());
 
 const PAYMENT_CONFIRMATION_URL = `${process.env.FRONT_END_URL}/payment-confirmation`;
 
-app.post("/create-checkout-session", async (req, res) => {
+app.post("create-checkout-session", async (req, res) => {
   console.log(req.body);
   const items = req.body.products.map((product) => ({
     price_data: {
