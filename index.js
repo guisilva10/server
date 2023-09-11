@@ -18,6 +18,7 @@ app.post("/create-checkout-session", async (req, res) => {
       currency: "brl",
       product_data: {
         name: product.name,
+        size: product.size,
       },
       unit_amount: parseInt(`${product.price}00`),
     },
