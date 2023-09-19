@@ -17,8 +17,8 @@ app.post("/create-checkout-session", async (req, res) => {
     price_data: {
       currency: "brl",
       product_data: {
-        name: product.name,
-        size: product.size,
+        name: `${product.name} ${product.size}`,
+        
       },
       unit_amount: parseInt(`${product.price}00`),
     },
@@ -30,9 +30,13 @@ app.post("/create-checkout-session", async (req, res) => {
     mode: "payment",
     success_url: `${PAYMENT_CONFIRMATION_URL}?success=true`,
     cancel_url: `${PAYMENT_CONFIRMATION_URL}?canceled=true`,
+    
   });
+
+ 
 
   res.send({ url: session.url });
 });
 
 app.listen(process.env.PORT || 5000);
+
